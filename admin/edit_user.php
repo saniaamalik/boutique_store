@@ -84,11 +84,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <title>Edit User</title>
 
 <style>
-/* Page ka background - Purple color */
+/* Page ka background - Maroon color */
 body{
     margin:0;
     font-family:'Segoe UI', sans-serif;
-    background:#e9d5ff;  /* Light purple */
+    background:#eda7a2;  /* Light pink */
 }
 
 /* Main container - Center mein content */
@@ -101,7 +101,7 @@ body{
 
 /* Heading - Bada title */
 h2{
-    color:#6a0dad;  /* Purple color */
+    color:#800000;  /* Maroon color */
     margin-top:25px;
     font-size: 1.8rem;
 }
@@ -111,7 +111,7 @@ h2{
     width: 90%;  /* Mobile par width 90% */
     max-width: 450px;  /* Desktop par 450px se upar nahi */
     margin: 40px auto;
-    background: #f3e8ff;  /* Light purple background */
+    background: #ffe6f2;  /* Light pink background */
     padding: 25px;  /* Inner spacing */
     border-radius: 15px;  /* Round corners */
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);  /* Shadow effect */
@@ -134,7 +134,7 @@ input{
 button{
     width: 100%;
     padding: 12px;  /* Button ko bada banao */
-    background: #6a0dad;  /* Purple button */
+    background: #800000;  /* Maroon button */
     color: white;  /* White text */
     border: none;
     border-radius: 10px;  /* Round button */
@@ -146,7 +146,7 @@ button{
 
 /* Jab mouse pe hoover karo */
 button:hover{
-    background: #4b0082;  /* Dark purple */
+    background: #660000;  /* Dark maroon */
 }
 
 /* Error message styling */

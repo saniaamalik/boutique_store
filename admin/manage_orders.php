@@ -94,11 +94,11 @@ function cleanStatus($status){//agarletters k ilawa kuch to hata do
 <title>Manage Orders</title>
 
 <style>
-/* Page ka background - Purple color */
+/* Page ka background - Maroon color */
 body{
     margin:0;
     font-family:'Segoe UI', sans-serif;
-    background:#e9d5ff;  /* Light purple */
+    background:#eda7a2;  /* Light pink */
 }
 
 /* Main container - Center mein content */
@@ -112,7 +112,7 @@ body{
 
 /* Heading - Bada title */
 h2{
-    color:#6a0dad;  /* Purple color */
+    color:#800000;  /* Maroon color */
     margin-top:25px;
 }
 
@@ -136,7 +136,7 @@ h2{
 /* Search button */
 .search-box button{
     padding:10px 20px;  /* Button ka size */
-    background:#6a0dad;  /* Purple button */
+    background:#800000;  /* Maroon button */
     color:white;  /* White text */
     border:none;
     border-radius:10px;  /* Round button */
@@ -146,7 +146,7 @@ h2{
 .table-wrapper{
     width:100%;  /* Puri width */
     overflow-x:auto;  /* Horizontal scroll agar zaroori ho */
-    background:white;  /* White background */
+    background:#ffe6f2;  /* White background */
     border-radius:10px;  /* Round corners */
 }
 
@@ -159,7 +159,7 @@ table{
 
 /* Table ke headings - Upar wali row */
 th{
-    background:#6a0dad;  /* Purple heading */
+    background:#800000;  /* Maroon heading */
     color:white;  /* White text */
     padding:15px;  /* Inner spacing */
     text-align:left;  /* Left align */
@@ -194,7 +194,7 @@ table select{
 }
 
 table button{
-    background:#6a0dad;  /* Purple button */
+    background:#800000;  /* Maroon button */
     color:white;  /* White text */
     border:none;
     padding:6px 10px;  /* Button size */

@@ -12,7 +12,7 @@ $firstLetter = strtoupper(substr($email, 0, 1));
 /* ===== NAVBAR BASE ===== */
 .navbar {
     min-height: 80px; /* Fixed height ki jagah min-height use ki hai */
-    background: white;
+    background: #800000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,7 +24,7 @@ $firstLetter = strtoupper(substr($email, 0, 1));
 .logo {
     font-size: 20px;
     font-weight: bold;
-    color: #6a0dad;
+    color: white;
 }
 
 .menu {
@@ -35,7 +35,7 @@ $firstLetter = strtoupper(substr($email, 0, 1));
 
 .menu a {
     text-decoration: none;
-    color: #333;
+    color: white;
     font-weight: 500;
     padding: 8px 10px;
     font-size: 14px;
@@ -43,7 +43,7 @@ $firstLetter = strtoupper(substr($email, 0, 1));
 }
 
 .menu a:hover {
-    color: #6a0dad;
+    color: #ffd700;
 }
 
 /* DROPDOWN */
@@ -55,7 +55,8 @@ $firstLetter = strtoupper(substr($email, 0, 1));
     position: absolute;
     top: 100%;
     left: 0;
-    background: white;
+    background: #800000;
+    color: white;
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
     border-radius: 8px;
     min-width: 160px;
@@ -70,7 +71,13 @@ $firstLetter = strtoupper(substr($email, 0, 1));
 .dropdown a {
     display: block;
     padding: 10px;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown a:hover {
+    background: rgba(255,255,255,0.1);
 }
 
 /* PROFILE */
@@ -78,13 +85,19 @@ $firstLetter = strtoupper(substr($email, 0, 1));
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #6a0dad;
-    color: white;
+    background: #ffe6f2;
+    color: #800000;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     text-decoration: none;
+    transition: 0.3s;
+}
+
+.profile:hover {
+    background: #ffccdd;
+    transform: scale(1.1);
 }
 
 /* ===================================================
@@ -118,7 +131,7 @@ $firstLetter = strtoupper(substr($email, 0, 1));
     .dropdown {
         position: static; 
         box-shadow: none;
-        border: 1px solid #f3e8ff;
+        border: 1px solid #ffe6f2;
         width: 100%;
     }
 }

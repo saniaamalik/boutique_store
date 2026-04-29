@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 body{
     margin:0;
     font-family:'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #6a0dad, #8e44ad, #c084fc);
+    background: linear-gradient(135deg, #800000, #c32148, #ff99cc);
     height:100vh;
     display:flex;
     justify-content:center;
@@ -99,7 +99,7 @@ body{
 
 /* TITLE */
 h2{
-    color:#6a0dad;
+    color:#800000;
 }
 
 /* LABEL */
@@ -111,7 +111,7 @@ label{
     margin-left:5px;
    
     font-size:14px;
-    color:#4b2c5e;
+    color:#660000;
 }
 
 /* INPUT */
@@ -120,7 +120,7 @@ input{
     padding:12px;
     border-radius:25px;
     border:none;
-    background:#f3e8ff;
+    background:#ffe6f2;
     outline:none;
 }
 
@@ -131,7 +131,7 @@ button{
     padding:12px;
     border:none;
     border-radius:25px;
-    background:#6a0dad;
+    background:#800000;
     color:white;
     cursor:pointer;
     font-weight:bold;
@@ -150,7 +150,7 @@ button{
     font-size:14px;
 }
 .login-link a{
-    color:#6a0dad;
+    color:#800000;
     font-weight:bold;
     text-decoration:none;
 }

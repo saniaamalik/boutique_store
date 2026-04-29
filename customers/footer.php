@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <style>
 
 .footer-container{
-    background:#6a0dad;
+    background:#800000;
     color:white;
     padding:30px;
     margin-top:40px;
@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 .contact-form button{
     padding:12px;
     background:#ffd700;
-    color:#6a0dad;
+    color:#800000;
     border:none;
     border-radius:5px;
     cursor:pointer;

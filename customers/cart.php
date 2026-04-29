@@ -169,7 +169,7 @@ html, body {
 
 body{
     font-family:Arial;
-    background:#e9d5ff;
+    background:#eda7a2;
     display:flex;
     flex-direction:column;
     min-height:100vh;
@@ -181,7 +181,7 @@ body{
     width:95%;
     max-width:1100px;
     margin:40px auto;
-    background:white;
+    background:#ffe6f2;
     padding:20px;
     border-radius:12px;
     flex:1;
@@ -189,7 +189,7 @@ body{
 
 h2{
     text-align:center;
-    color:#6a0dad;
+    color:#800000;
 }
 
 .table-wrap{overflow-x:auto;}
@@ -201,7 +201,7 @@ table{
 }
 
 th{
-    background:#6a0dad;
+    background:#800000;
     color:white;
     padding:12px;
 }
@@ -226,7 +226,7 @@ input{
 }
 
 button{
-    background:#6a0dad;
+    background:#800000;
     color:white;
     border:none;
     padding:10px 15px;
@@ -247,7 +247,7 @@ a{
     font-size:18px;
     margin-top:15px;
     font-weight:bold;
-    color:#6a0dad;
+    color:#800000;
 }
 
 .footer-wrapper{

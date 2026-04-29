@@ -92,7 +92,7 @@ $categories = $conn->query("SELECT * FROM categories");
 body{
     margin:0;
     font-family:'Segoe UI', sans-serif;
-    background:#e9d5ff;
+    background:#eda7a2;
 }
 
 .container{
@@ -104,7 +104,7 @@ body{
 }
 
 h2{
-    color:#6a0dad;
+    color:#800000;
     margin-top:25px;
     font-size:1.8rem;
 }
@@ -130,7 +130,7 @@ h2{
 
 .search-bar button{
     width:100px;
-    background:#6a0dad;
+    background:#800000;
     color:white;
     border:none;
     border-radius:8px;
@@ -153,7 +153,7 @@ h2{
 
 .filters button{
     padding:10px 20px;
-    background:#6a0dad;
+    background:#800000;
     color:white;
     border:none;
     border-radius:10px;
@@ -162,7 +162,7 @@ h2{
 /* TABLE */
 .table-wrapper{
     overflow-x:auto;
-    background:white;
+    background:#ffe6f2;
     border-radius:10px;
 }
 
@@ -173,7 +173,7 @@ table{
 }
 
 th{
-    background:#6a0dad;
+    background:#800000;
     color:white;
     padding:15px;
     text-align:left;

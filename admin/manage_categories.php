@@ -52,11 +52,11 @@ if ($search != "") {
 <title>Manage Categories</title>
 
 <style>
-/* Page ka background - Purple color */
+/* Page ka background - Maroon color */
 body{
     margin:0;
     font-family:'Segoe UI', sans-serif;
-    background:#e9d5ff;  /* Light purple */
+    background:#eda7a2;  /* Light pink */
 }
 
 /* Main container - Center mein content */
@@ -69,7 +69,7 @@ body{
 
 /* Heading - Bada title */
 h2{
-    color:#6a0dad;  /* Purple color */
+    color:#800000;  /* Maroon color */
     margin-top:25px;
     font-size: 1.8rem;
 }
@@ -97,7 +97,7 @@ h2{
 .search-box button{
     padding: 10px 20px;  /* Button ka size */
     border: none;
-    background: #6a0dad;  /* Purple button */
+    background: #800000;  /* Maroon button */
     color: white;  /* White text */
     border-radius: 10px;  /* Round button */
     cursor: pointer;  /* Cursor change */
@@ -106,14 +106,14 @@ h2{
 
 /* Button hover effect */
 .search-box button:hover{
-    background: #4b0082;  /* Dark purple */
+    background: #660000;  /* Dark maroon */
 }
 
 /* Table ko responsive banao - Mobile mein scroll kare */
 .table-wrapper{
     width:100%;
     overflow-x:auto;  /* Horizontal scroll agar zaroori ho */
-    background: white;  /* White background */
+    background: #ffe6f2;  /* White background */
     border-radius: 10px;  /* Round corners */
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);  /* Shadow effect */
 }
@@ -127,7 +127,7 @@ table{
 
 /* Table ke headings - Upar wali row */
 th{
-    background:#6a0dad;  /* Purple heading */
+    background:#800000;  /* Maroon heading */
     color:white;  /* White text */
     padding:15px 12px;  /* Inner spacing */
     text-align: left;  /* Left align */

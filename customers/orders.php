@@ -38,7 +38,7 @@ html, body {
 
 body{
     font-family:Arial;
-    background:#e9d5ff;
+    background:#eda7a2;
     margin:0;
     display:flex;
     flex-direction:column;
@@ -55,7 +55,7 @@ body{
     width:95%;
     max-width:1100px;
     margin:40px auto;
-    background:white;
+    background:#ffe6f2;
     padding:20px;
     border-radius:12px;
     box-shadow:0 4px 12px rgba(0,0,0,0.08);
@@ -64,7 +64,7 @@ body{
 
 /* TITLE */
 h2{
-    color:#6a0dad;
+    color:#800000;
     text-align:center;
     margin-bottom:20px;
 }
@@ -127,7 +127,7 @@ h2{
 .total{
     margin-top:10px;
     font-weight:bold;
-    color:#6a0dad;
+    color:#800000;
     font-size:15px;
 }
 

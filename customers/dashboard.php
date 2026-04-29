@@ -44,7 +44,7 @@ $is_logged_in = !empty($_SESSION['user_id']) ? 'true' : 'false';
 
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: #e9d5ff;
+    background: #eda7a2;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -57,14 +57,14 @@ body {
     padding: 14px 20px;
     justify-content: center;
     flex-wrap: wrap;
-    background: white;
-    border-bottom: 2px solid #e9d5ff;
+    background:  #eda7a2;
+    border-bottom: 2px solid #ffe6f2;
 }
 
 .categories a {
     padding: 8px 20px;
-    background: #f3e8ff;
-    color: #6a0dad;
+    background: #ffe6f2;
+    color: #800000;
     border-radius: 20px;
     text-decoration: none;
     font-size: 14px;
@@ -74,7 +74,7 @@ body {
 
 .categories a.active,
 .categories a:hover {
-    background: #6a0dad;
+    background: #800000;
     color: white;
 }
 
@@ -85,8 +85,8 @@ body {
     gap: 14px;
     flex-wrap: wrap;
     padding: 14px 20px;
-    background: #f3e8ff;
-    border-bottom: 1px solid #ddd;
+    background:  #eda7a2;
+    border-bottom: 1px solid  #eda7a2;
 }
 
 .filter-bar form {
@@ -96,7 +96,7 @@ body {
     background: white;
     padding: 8px 14px;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(106,13,173,0.08);
+    box-shadow: 0 2px 8px rgba(128,0,0,0.08);
 }
 
 .filter-bar input[type="text"],
@@ -113,12 +113,12 @@ body {
 
 .filter-bar input[type="text"]:focus,
 .filter-bar select:focus {
-    border-color: #8e44ad;
+    border-color: #c32148;
 }
 
 .filter-bar button {
     padding: 8px 20px;
-    background: #6a0dad;
+    background: #800000;
     color: white;
     border: none;
     border-radius: 8px;
@@ -131,7 +131,7 @@ body {
 }
 
 .filter-bar button:hover {
-    background: #520a8a;
+    background: #660000;
 }
 
 /* ===== PRODUCTS SECTION ===== */
@@ -155,7 +155,7 @@ body {
 .card {
     background: white;
     border-radius: 14px;
-    box-shadow: 0 3px 12px rgba(106,13,173,0.09);
+    box-shadow: 0 3px 12px rgba(128,0,0,0.09);
     overflow: hidden;
     /* flex column so card-body fills remaining height */
     display: flex;
@@ -165,7 +165,7 @@ body {
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 26px rgba(106,13,173,0.18);
+    box-shadow: 0 10px 26px rgba(128,0,0,0.18);
 }
 
 /* ===== IMAGE: fixed height, same across all cards ===== */
@@ -174,7 +174,7 @@ body {
     height: 240px;          /* fixed height - all images same */
     object-fit: cover;      /* fills box, crops neatly */
     object-position: center top;
-    background: #f9f0ff;
+    background: #fff0f5;
     display: block;
     flex-shrink: 0;
 }
@@ -193,7 +193,7 @@ body {
 /* NAME: min-height keeps all name rows same height */
 .card-body h3 {
     font-size: 15px;
-    color: #2d0054;
+    color: #8b0000;
     font-weight: 600;
     line-height: 1.4;
     min-height: 42px;      /* 2-line reserve */
@@ -204,7 +204,7 @@ body {
 }
 
 .price {
-    color: #6a0dad;
+    color: #800000;
     font-weight: 700;
     font-size: 17px;
 }
@@ -250,7 +250,7 @@ body {
     transition: border-color 0.2s;
 }
 
-.qty:focus { border-color: #6a0dad; }
+.qty:focus { border-color: #800000; }
 
 /* ADD TO CART BUTTON */
 .add-cart-btn {
@@ -258,7 +258,7 @@ body {
     padding: 10px;
     border: none;
     border-radius: 8px;
-    background: #6a0dad;
+    background: #800000;
     color: white;
     cursor: pointer;
     font-size: 14px;
@@ -268,7 +268,7 @@ body {
     margin-top: 8px;
 }
 
-.add-cart-btn:hover { background: #520a8a; }
+.add-cart-btn:hover { background: #660000; }
 
 .add-cart-btn:disabled,
 .add-cart-btn.disabled-btn {
@@ -326,7 +326,7 @@ body {
 .prompt-icon  { font-size: 46px; margin-bottom: 12px; }
 
 .prompt-box h3 {
-    color: #6a0dad;
+    color: #800000;
     font-size: 21px;
     margin-bottom: 8px;
 }
@@ -350,7 +350,7 @@ body {
     font-weight: bold;
     font-size: 14px;
     text-decoration: none;
-    background: #6a0dad;
+    background: #800000;
     color: white;
     transition: 0.25s;
     border: none;
@@ -358,22 +358,22 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 
-.prompt-login:hover { background: #520a8a; }
+.prompt-login:hover { background: #660000; }
 
 .prompt-cancel {
     padding: 11px 22px;
     border-radius: 22px;
     font-weight: bold;
     font-size: 14px;
-    background: #f3e8ff;
-    color: #6a0dad;
+    background: #ffe6f2;
+    color: #800000;
     border: none;
     cursor: pointer;
     font-family: 'Segoe UI', sans-serif;
     transition: 0.25s;
 }
 
-.prompt-cancel:hover { background: #e0c0ff; }
+.prompt-cancel:hover { background: #ffccdd; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
@@ -492,7 +492,7 @@ while ($row = $products->fetch_assoc()):
     <img class="card-img"
          src="../uploads/<?= htmlspecialchars($row['image']) ?>"
          alt="<?= htmlspecialchars($row['name']) ?>"
-         onerror="this.style.background='#f3e8ff'">
+         onerror="this.style.background='#ffe6f2'">
 
     <div class="card-body">
 

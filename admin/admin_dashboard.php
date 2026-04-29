@@ -46,7 +46,7 @@ $sales = $conn->query("
 body{
     margin:0;
     font-family:'Segoe UI', sans-serif;
-    background:#e9d5ff;  /* Halka purple color */
+    background:#eda7a2;  /* Light pink background */
 }
 
 /* Main container - Poori width mein content */
@@ -60,7 +60,7 @@ body{
 
 /* Headings - Bade heading */
 h2{
-    color:#6a0dad;  /* Purple color */
+    color:#800000;  /* Maroon color */
     font-size:1.6rem;
     margin:15px 0;
 }
@@ -86,13 +86,13 @@ h2{
 /* Jab mouse pe hoover karo toh effect */
 .card:hover{
     transform:translateY(-5px);  /* Thora upar aao */
-    box-shadow:0 10px 25px rgba(106,13,173,0.2);  /* Shadow bade */
-    background:#f7efff;  /* Light purple background */
+    box-shadow:0 10px 25px rgba(128,0,0,0.2);  /* Shadow bade */
+    background:#fff0f5;  /* Light pink background */
 }
 
 /* Card heading - Card ke liye title */
 .card h3{
-    color:#6a0dad;
+    color:#800000;
     font-size:1.1rem;
     margin-bottom:8px;
 }
@@ -124,7 +124,7 @@ table{
 
 /* Table ke headings - Upar wali row */
 th{
-    background:#6a0dad;  /* Purple heading */
+    background:#800000;  /* Maroon heading */
     color:white;  /* White text */
     padding:14px;
     text-align:left;

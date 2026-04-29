@@ -40,7 +40,7 @@ $sales = $conn->query("
 body{
     margin:0;
     font-family:'Segoe UI', sans-serif;
-    background:#e9d5ff;
+    background:#eda7a2;
 }
 
 .container{
@@ -52,7 +52,7 @@ body{
 }
 
 h2{
-    color:#6a0dad;
+    color:#800000;
     margin-top:25px;
     font-size: 1.8rem;
 }
@@ -67,7 +67,7 @@ h2{
 }
 
 .card{
-    background:white;
+    background:#ffe6f2;
     padding:25px;
     border-radius:12px;
     width: 250px; /* Thora bara kiya behtar visibility ke liye */
@@ -76,7 +76,7 @@ h2{
 }
 
 .card h3{
-    color:#6a0dad;
+    color:#800000;
     margin:0;
     font-size: 1.1rem;
 }
@@ -92,7 +92,7 @@ h2{
 .table-wrapper {
     width: 100%;
     overflow-x: auto; /* Table scroll karegi choti screen par */
-    background: white;
+    background: #ffe6f2;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     margin-top: 30px;
@@ -105,7 +105,7 @@ table{
 }
 
 th{
-    background:#6a0dad;
+    background:#800000;
     color:white;
     padding:15px 12px;
     text-align: left;

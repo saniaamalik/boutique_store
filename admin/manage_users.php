@@ -93,11 +93,11 @@ if (isset($_GET['search']) && $_GET['search'] != "") {
 <title>Manage Users</title>
 
 <style>
-/* Page ka background - Purple color */
+/* Page ka background - Maroon color */
 body{
     margin:0;
     font-family:'Segoe UI', sans-serif;
-    background:#e9d5ff;
+    background:#eda7a2;
 }
 
 /* Main container - Poori width mein center mein */
@@ -111,7 +111,7 @@ body{
 
 /* Headings - Bade likha hua title */
 h2{
-    color:#6a0dad;  /* Purple color */
+    color:#800000;  /* Maroon color */
     text-align:center;
     margin-top:25px;
     font-size: 1.8rem;
@@ -122,7 +122,7 @@ h2{
     width: 90%;
     max-width: 500px;
     margin: 40px auto;
-    background: #f3e8ff;
+    background: #ffe6f2;
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -142,7 +142,7 @@ input{
 
 /* Button - Click karne ke liye */
 button{
-    background: #6a0dad;  /* Purple button */
+    background: #800000;  /* Maroon button */
     color: white;  /* White text */
     padding: 12px 25px;
     border: none;
@@ -155,7 +155,7 @@ button{
 
 /* Jab mouse pe hoover karo */
 button:hover{
-    background: #4b0082;  /* Dark purple */
+    background: #660000;  /* Dark maroon */
 }
 
 /* Search ka box - Customers dhundne ke liye */
@@ -196,7 +196,7 @@ table{
 
 /* Table ke headings - Upar wali row */
 th{
-    background: #6a0dad;  /* Purple heading */
+    background: #800000;  /* Maroon heading */
     color: white;
     padding: 15px 12px;
     text-align: left;
@@ -211,7 +211,7 @@ td{
 
 /* Alternate rows ka color - Padhne mein aasan ho */
 tr:nth-child(even){
-    background: #f3e8ff;
+    background: #ffe6f2;
 }
 
 /* Edit aur Delete links */

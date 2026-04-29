@@ -91,14 +91,14 @@ $firstLetter = $emailVal ? strtoupper(substr($emailVal, 0, 1)) : "U";
 body{
     margin:0;
     font-family:Arial;
-    background:#e9d5ff;
+    background:#eda7a2;
 }
 
 /* CONTAINER */
 .container{
     width:350px;
     margin:50px auto;
-    background:white;
+    background:#ffe6f2;
     padding:22px;
     border-radius:14px;
     text-align:center;
@@ -109,7 +109,7 @@ body{
 .avatar{
     width:70px;
     height:70px;
-    background:#6a0dad;
+    background:#800000;
     color:white;
     border-radius:50%;
     display:flex;
@@ -122,8 +122,8 @@ body{
 
 /* ALERTS */
 .success{
-    background:#e6d6ff;
-    color:#4b0082;
+    background:#ffe6f2;
+    color:#8b0000;
     padding:8px;
     border-radius:6px;
     margin-bottom:10px;
@@ -162,7 +162,7 @@ button{
     margin-top:15px;
     width:100%;
     padding:10px;
-    background:#6a0dad;
+    background:#800000;
     color:white;
     border:none;
     border-radius:6px;
@@ -170,7 +170,7 @@ button{
 }
 
 button:hover{
-    background:#520a8a;
+    background:#660000;
 }
 
 /* ================= RESPONSIVE FIX ================= */

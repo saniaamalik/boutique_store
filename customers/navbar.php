@@ -13,7 +13,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 .navbar {
     height: 70px;
-    background: white;
+    background: #800000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,7 +27,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 .navbar .logo {
     font-size: 22px;
     font-weight: bold;
-    color: #6a0dad;
+    color: white;
     text-decoration: none;
     white-space: nowrap;
 }
@@ -41,7 +41,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 .menu a {
     text-decoration: none;
-    color: #333;
+    color: white;
     font-weight: 500;
     font-size: 15px;
     padding-bottom: 4px;
@@ -51,19 +51,19 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 }
 
 .menu a:hover {
-    color: #6a0dad;
-    border-bottom-color: #6a0dad;
+    color: #ffd700;
+    border-bottom-color: #ffd700;
 }
 
 .menu a.active {
-    color: #6a0dad;
-    border-bottom-color: #6a0dad;
+    color: #ffd700;
+    border-bottom-color: #ffd700;
 }
 
 .menu a.admin-link {
-    color: #6a0dad;
+    color: white;
     font-weight: 700;
-    background: #f3e8ff;
+    background: rgba(255,255,255,0.2);
     padding: 5px 14px;
     border-radius: 20px;
     border-bottom: none;
@@ -72,8 +72,8 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 }
 
 .menu a.admin-link:hover {
-    background: #6a0dad;
-    color: white;
+    background: white;
+    color: #800000;
 }
 
 .auth-buttons {
@@ -88,15 +88,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     font-weight: bold;
     font-size: 14px;
     text-decoration: none;
-    background: #f5f5f5;
-    color: #6a0dad;
-    border: 2px solid #6a0dad;
+    background: white;
+    color: #800000;
+    border: 2px solid white;
     transition: 0.3s;
 }
 
 .nav-login-btn:hover {
-    background: #6a0dad;
+    background: transparent;
     color: white;
+    border-color: white;
 }
 
 .nav-register-btn {
@@ -105,23 +106,23 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     font-weight: bold;
     font-size: 14px;
     text-decoration: none;
-    background: #6a0dad;
-    color: white;
-    border: 2px solid #6a0dad;
+    background:  #eda7a2;
+    color: #800000;
+    border: 2px solid #800000;
     transition: 0.3s;
 }
 
 .nav-register-btn:hover {
-    background: #520a8a;
-    border-color: #520a8a;
+    background: #ffe6f2;
+    border-color: #ffe6f2;
 }
 
 .profile {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #6a0dad;
-    color: white;
+    background: #ffe6f2;
+    color: #800000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,7 +136,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
 .profile:hover {
     transform: scale(1.1);
-    background: #520a8a;
+    background: #ffccdd;
 }
 
 @media (max-width: 768px) {

@@ -153,7 +153,7 @@ body {
 
 /* ===== CARD ===== */
 .card {
-    background: white;
+    background: #ffe6f2;
     border-radius: 14px;
     box-shadow: 0 3px 12px rgba(128,0,0,0.09);
     overflow: hidden;
@@ -174,7 +174,7 @@ body {
     height: 240px;          /* fixed height - all images same */
     object-fit: cover;      /* fills box, crops neatly */
     object-position: center top;
-    background: #fff0f5;
+    background: #ffe6f2;
     display: block;
     flex-shrink: 0;
 }

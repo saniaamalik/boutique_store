@@ -177,7 +177,7 @@ button{
 
 <form method="POST">//post -> data hidden ma server ko dena
 
-//token submit with form
+
 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
 
 <label>Username</label>

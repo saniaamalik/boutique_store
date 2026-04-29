@@ -164,7 +164,7 @@ button{
 <h2>Register</h2>
 
 <form method="POST">
-//csrf token submit with form
+<!--csrf token submit with form -->
 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
 
 <label>Username</label>

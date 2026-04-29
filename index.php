@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 ?>
@@ -17,7 +16,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: url('uploads/index1.jpeg') no-repeat center center fixed;
+    background: url('uploads/index1.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -28,7 +27,7 @@ body{
     left: 30px;
     font-size: 22px;
     font-weight: bold;
-    background: linear-gradient(to right, #4b0082, #8e44ad);
+    background: linear-gradient(to right, #800000, #ff69b4);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -56,28 +55,28 @@ body{
 
 /* BUTTONS */
 .login-btn{
-    background: #ffffff;
-    color: #6a0dad;
+    background: #fff0f5;
+    color: #800000;
 }
 
 .login-btn:hover{
-    background: #f0e0ff;
+    background: #ffd6e8;
 }
 
 .register-btn{
-    background: #8e44ad;
+    background: #800000;
     color: white;
 }
 
 .register-btn:hover{
-    background: #6a0dad;
+    background: #660000;
 }
 
 /* OVERLAY */
 .overlay{
     width: 100%;
     min-height: 100vh;
-    background: rgba(138, 43, 226, 0.35);
+    background: rgba(255,182,193,0.45);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,22 +86,24 @@ body{
 /* CONTAINER */
 .container{
     text-align: center;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 250, 252, 0.6);
     padding: 50px 70px;
     border-radius: 25px;
     max-width: 500px;
     width: 100%;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 192, 203, 0.5);
 }
 
 /* TEXT */
 h1{
     font-size: 48px;
-    color: #6a0dad;
+    color: #800000;
 }
 
 p{
     font-size: 16px;
-    color: #4b2c5e;
+    color: #99004d;
     line-height: 1.5;
 }
 
@@ -111,16 +112,17 @@ p{
     padding: 12px 28px;
     border: none;
     border-radius: 25px;
-    background: #8e44ad;
+    background: #800000;
     color: white;
     cursor: pointer;
     font-weight: bold;
     font-size: 16px;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.3s;
 }
 
 .shop-btn:hover{
-    background: #6a0dad;
+    background: #660000;
+    transform: translateY(-2px);
 }
 
 /* MOBILE */
@@ -222,4 +224,3 @@ p{
 
 </body>
 </html>
-```

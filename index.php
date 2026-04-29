@@ -1,213 +1,225 @@
-<?php
-// PHP session start karta hai — user login data ya cart data store karne ke liye zaroori hota hai
-session_start();
 
-/*
-Yeh multi-line comment hai:
-✔ Shop Now button dashboard par le jata hai
-✔ Login zaroori nahi homepage dekhne ke liye
-✔ Login sirf cart/add to cart ke waqt check hota hai
-*/
+<?php
+session_start();
 ?>
 
 <!DOCTYPE html>
-<!-- HTML5 document start -->
-
 <html>
 <head>
-<!-- Page ka title browser tab mein show hota hai -->
+
 <title>Stylish Boutique</title>
 
-<!-- Mobile responsive banane ke liye -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-/* BODY styling: poori website ka background aur font set karta hai */
+
 body{
-    margin: 0; /* default spacing remove */
-    padding: 0; /* default padding remove */
-    font-family: 'Segoe UI', sans-serif; /* clean modern font */
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
     background: url('uploads/index1.jpeg') no-repeat center center fixed;
-    /* background image set kar raha hai, center aur fixed rakhta hai */
-    background-size: cover; /* image full screen cover kare */
+    background-size: cover;
 }
 
-/* LOGO styling */
+/* LOGO */
 .logo{
-    position: absolute; /* screen ke fixed position pe rakhta hai */
-    top: 20px; /* upar se 20px gap */
-    left: 30px; /* left se 30px gap */
-    font-size: 24px; /* text size */
-    font-weight: bold; /* bold text */
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 22px;
+    font-weight: bold;
     background: linear-gradient(to right, #4b0082, #8e44ad);
-    /* gradient color effect */
-    -webkit-background-clip: text; /* text ke andar gradient apply */
-    -webkit-text-fill-color: transparent; /* text transparent taake gradient dikhe */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* TOP BAR (login/register buttons container) */
+/* TOP BAR */
 .top-bar{
-    position: absolute; /* fixed top right */
+    position: absolute;
     top: 20px;
     right: 30px;
-    display: flex; /* buttons side by side */
-    gap: 10px; /* buttons ke beech space */
-    align-items: center; /* vertical alignment */
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
-/* TOP BAR ke links (buttons) */
 .top-bar a{
-    text-decoration: none; /* underline remove */
-    padding: 10px 20px; /* button size */
-    border-radius: 25px; /* round corners */
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 25px;
     font-weight: bold;
-    font-family: 'Segoe UI', sans-serif;
     font-size: 14px;
+    white-space: nowrap;
 }
 
-/* LOGIN button style */
+/* BUTTONS */
 .login-btn{
-    background: #ffffff; /* white background */
-    color: #6a0dad; /* purple text */
+    background: #ffffff;
+    color: #6a0dad;
 }
 
 .login-btn:hover{
-    background: #f0e0ff; /* hover effect */
+    background: #f0e0ff;
 }
 
-/* REGISTER button style */
 .register-btn{
-    background: #8e44ad; /* purple background */
+    background: #8e44ad;
     color: white;
 }
 
 .register-btn:hover{
-    background: #6a0dad; /* darker purple on hover */
+    background: #6a0dad;
 }
 
-/* FULL SCREEN OVERLAY */
+/* OVERLAY */
 .overlay{
     width: 100%;
-    height: 100vh; /* full screen height */
-    background: rgba(138, 43, 226, 0.35); /* purple transparent layer */
-    display: flex; /* center content */
-    justify-content: center; /* horizontal center */
-    align-items: center; /* vertical center */
+    min-height: 100vh;
+    background: rgba(138, 43, 226, 0.35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-/* MAIN CONTENT BOX */
+/* CONTAINER */
 .container{
     text-align: center;
-    background: rgba(255, 255, 255, 0.65); /* semi transparent white box */
-    padding: 50px 70px; /* spacing inside box */
-    border-radius: 25px; /* rounded corners */
+    background: rgba(255, 255, 255, 0.7);
+    padding: 50px 70px;
+    border-radius: 25px;
+    max-width: 500px;
+    width: 100%;
 }
 
-/* MAIN TITLE */
+/* TEXT */
 h1{
-    font-size: 50px;
-    color: #6a0dad; /* purple color */
+    font-size: 48px;
+    color: #6a0dad;
 }
 
-/* PARAGRAPH TEXT */
 p{
-    font-size: 17px;
+    font-size: 16px;
     color: #4b2c5e;
+    line-height: 1.5;
 }
 
-/* SHOP BUTTON */
+/* BUTTON */
 .shop-btn{
-    padding: 12px 30px;
+    padding: 12px 28px;
     border: none;
     border-radius: 25px;
     background: #8e44ad;
     color: white;
-    cursor: pointer; /* mouse pointer hand ban jata hai */
+    cursor: pointer;
     font-weight: bold;
     font-size: 16px;
-    transition: background 0.3s; /* smooth hover animation */
+    transition: background 0.3s;
 }
 
 .shop-btn:hover{
     background: #6a0dad;
 }
 
-/* RESPONSIVE DESIGN (mobile screens ke liye) */
-@media (max-width: 600px){
+/* MOBILE */
+@media (max-width: 768px){
 
-    .container{
-        padding: 30px 20px; /* mobile pe chhota padding */
-    }
-
-    h1{
-        font-size: 32px; /* chhota heading mobile ke liye */
+    .logo{
+        font-size: 18px;
+        left: 15px;
+        top: 15px;
     }
 
     .top-bar{
-        top: 12px;
-        right: 12px;
+        right: 15px;
+        top: 15px;
+        gap: 6px;
     }
 
     .top-bar a{
-        padding: 8px 14px;
-        font-size: 13px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .container{
+        padding: 30px 20px;
+    }
+
+    h1{
+        font-size: 32px;
+    }
+
+    p{
+        font-size: 14px;
+    }
+
+    .shop-btn{
+        font-size: 14px;
+        padding: 10px 22px;
     }
 }
+
+/* EXTRA SMALL */
+@media (max-width: 400px){
+
+    .top-bar{
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .container{
+        padding: 25px 15px;
+    }
+
+    h1{
+        font-size: 26px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- LOGO show hota hai top left -->
 <div class="logo">🛍 Stylish Boutique</div>
 
-<!-- TOP BAR: login/register ya dashboard buttons -->
 <div class="top-bar">
 
 <?php if (isset($_SESSION['user_id'])): ?>
-    <!-- Agar user login hai -->
 
-    <!-- Dashboard button -->
     <a href="customers/dashboard.php" class="register-btn">My Dashboard</a>
-
-    <!-- Logout button -->
     <a href="customers/logout.php" class="login-btn">Logout</a>
 
 <?php else: ?>
-    <!-- Agar user login nahi hai -->
 
-    <!-- Login page link -->
     <a href="login.php" class="login-btn">Login</a>
-
-    <!-- Register page link -->
     <a href="register.php" class="register-btn">Register</a>
 
-<?php endif; ?> 
+<?php endif; ?>
 
 </div>
 
-<!-- MAIN SCREEN AREA -->
 <div class="overlay">
 
     <div class="container">
 
-        <!-- Website heading -->
         <h1>Stylish Boutique</h1>
 
-        <!-- Description text -->
         <p>
             Welcome to Stylish Boutique — where elegance meets modern fashion.<br>
             Discover trendy, premium outfits designed just for you.
         </p>
 
-        <!-- Shop Now button -->
-        <!-- onclick = click par dashboard page open -->
         <button class="shop-btn" onclick="window.location.href='customers/dashboard.php'">
             Shop Now
         </button>
 
     </div>
+
 </div>
 
 </body>
 </html>
+```

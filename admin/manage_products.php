@@ -9,19 +9,22 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== "admin") {
 }
 
 /* DELETE PRODUCT */
+// Agar URL me delete parameter aaya hai (?delete=5)
 if (isset($_GET['delete'])) {
-    $id = intval($_GET['delete']);
+    $id = intval($_GET['delete']);//id ko int ma convert kero..
 
+     // product ka imd db se nikala
     $stmt = $conn->prepare("SELECT image FROM products WHERE id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $img = $stmt->get_result()->fetch_assoc();
 
+    //agar image exist kerti ha todel kerdo
     if ($img && !empty($img['image'])) {
         $file = "../uploads/" . $img['image'];
         if (file_exists($file)) unlink($file);
     }
-
+//db se delete
     $del = $conn->prepare("DELETE FROM products WHERE id=?");
     $del->bind_param("i", $id);
     $del->execute();
@@ -40,8 +43,8 @@ LEFT JOIN categories ON products.category_id = categories.id
 WHERE 1=1
 ";
 
-$params = [];
-$types = "";
+$params = []; // sql parameter
+$types = ""; //parameters types
 
 /* SEARCH */
 if (!empty($search)) {
@@ -52,7 +55,7 @@ if (!empty($search)) {
 
 /* CATEGORY */
 if (!empty($category)) {
-    $sql .= " AND categories.name = ?";
+    $sql .= " AND categories.name = ?";//category mtch kerna
     $params[] = $category;
     $types .= "s";
 }
@@ -68,7 +71,7 @@ if ($sort == "low") {
 
 /* EXECUTE */
 $stmt = $conn->prepare($sql);
-if (!empty($params)) {
+if (!empty($params)) {//if not empty then bind and fetch result
     $stmt->bind_param($types, ...$params);
 }
 $stmt->execute();

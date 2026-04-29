@@ -9,6 +9,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== "admin") {
 }
 
 /* TOTAL SALES SUMMARY */
+// Delivered orders ka total count aur total revenue nikal rahe hain
 $totalSales = $conn->query("
     SELECT 
         COUNT(*) as total_orders,
@@ -18,6 +19,7 @@ $totalSales = $conn->query("
 ")->fetch_assoc();
 
 /* ALL DELIVERED ORDERS WITH USER NAME */
+// Delivered orders fetch kar rahe hain with user name (JOIN users table)
 $sales = $conn->query("
     SELECT orders.*, users.name AS username
     FROM orders
@@ -173,8 +175,9 @@ td{
                 </tr>
             </thead>
             <tbody>
+                <!-- agar orders exist kerty hain -->
                 <?php if ($sales->num_rows > 0): ?>
-                    <?php while($row = $sales->fetch_assoc()): ?>
+                    <?php while($row = $sales->fetch_assoc()): ?><!-- loop lagayi ha -->
                     <tr>
                         <td>#<?= $row['id']; ?></td>
                         <td><?= htmlspecialchars($row['username']); ?></td>

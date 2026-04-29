@@ -1,53 +1,60 @@
 <?php
+// Session start - User ki jankari save karne ke liye
 session_start();
 require("../config/db.php");
 
-// ONLY ADMIN
+// SIRF ADMIN USERS KO ACCESS - Dusre ko bahar nikal do
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== "admin") {
     header("Location: ../login.php");
     exit();
 }
 
-/* VALIDATE ID */
+/* USER ID KO VALIDATE KARO */
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("Invalid user ID!");
 }
 
+// ID ko integer mein convert karo
 $id = intval($_GET['id']);
 
-/* GET USER SAFELY */
-
+/* DATABASE SE USER KI data LE LO - Sirf customers */
 $stmt = $conn->prepare("SELECT * FROM users WHERE id=? AND role='customer'");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $user = $stmt->get_result()->fetch_assoc();
 
+// Agar user nahi mila toh error
 if (!$user) {
     die("User not found!");
 }
 
+// Error aur success messages ke liye
 $error = "";
 $success = "";
 
-/* UPDATE USER */
+/* USER KO UPDATE KARNE KA KAAM */
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
+    // Form se data le lo aur spaces hatao
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
     $phone = trim($_POST['phone']);
     $password = trim($_POST['password']);
 
+    // Validation - Name, email, phone zaroori hain
     if ($name == "" || $email == "" || $phone == "") {
         $error = "All fields required!";
     } else {
 
-        /* IF PASSWORD EMPTY → KEEP OLD */
+        /* AGAR PASSWORD EMPTY HAI TIH PURAANA PASSWORD RAKHENGE */
         if ($password == "") {
             $hashedPassword = $user['password'];
         } else {
+            // Naya password ko hash karo
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         }
 
+        // Database mein user update karo
         $update = $conn->prepare("
             UPDATE users 
             SET name=?, email=?, phone=?, password=? 
@@ -57,9 +64,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $update->bind_param("ssssi", $name, $email, $phone, $hashedPassword, $id);
         $update->execute();
 
+        // Success message
         $success = "User Updated Successfully!";
 
-        /* refresh data safely */
+        /* Updated user data ko dobara le lo */
         $stmt = $conn->prepare("SELECT * FROM users WHERE id=? AND role='customer'");
         $stmt->bind_param("i", $id);
         $stmt->execute();
@@ -76,81 +84,89 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <title>Edit User</title>
 
 <style>
+/* Page ka background - Purple color */
 body{
     margin:0;
     font-family:'Segoe UI', sans-serif;
-    background:#e9d5ff;
+    background:#e9d5ff;  /* Light purple */
 }
 
+/* Main container - Center mein content */
 .container{
-    width:95%; /* Mobile ke liye side margins */
+    width:95%;  /* Mobile ke liye side margins */
     max-width:1200px;
     margin:auto;
     text-align:center;
 }
 
+/* Heading - Bada title */
 h2{
-    color:#6a0dad;
+    color:#6a0dad;  /* Purple color */
     margin-top:25px;
     font-size: 1.8rem;
 }
 
-/* ⭐ RESPONSIVE FORM BOX */
+/* Form ka box - User edit karne ke liye */
 .form-box{
-    width: 90%;           /* Mobile par width automatic 90% ho jaye */
-    max-width: 450px;     /* Desktop par 450px se bada na ho */
+    width: 90%;  /* Mobile par width 90% */
+    max-width: 450px;  /* Desktop par 450px se upar nahi */
     margin: 40px auto;
-    background: #f3e8ff;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    box-sizing: border-box; /* Padding handling */
+    background: #f3e8ff;  /* Light purple background */
+    padding: 25px;  /* Inner spacing */
+    border-radius: 15px;  /* Round corners */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);  /* Shadow effect */
+    box-sizing: border-box;  /* Padding ko width ke andar rakhne ke liye */
 }
 
+/* Input field styling - Text likha jaye */
 input{
-    width: 100%;
+    width: 100%;  /* Puri width */
     box-sizing: border-box;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    outline: none;
+    padding: 12px;  /* Inner spacing */
+    margin: 10px 0;  /* Outer spacing */
+    border-radius: 10px;  /* Round corners */
+    border: 1px solid #ddd;  /* Light border */
+    outline: none;  /* Focus pe outline nahi */
     font-size: 14px;
 }
 
+/* Submit button */
 button{
     width: 100%;
-    padding: 12px;
-    background: #6a0dad;
-    color: white;
+    padding: 12px;  /* Button ko bada banao */
+    background: #6a0dad;  /* Purple button */
+    color: white;  /* White text */
     border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
+    border-radius: 10px;  /* Round button */
+    cursor: pointer;  /* Cursor change */
+    font-weight: bold;  /* Bold text */
     font-size: 16px;
-    transition: 0.3s;
+    transition: 0.3s;  /* Smooth animation */
 }
 
+/* Jab mouse pe hoover karo */
 button:hover{
-    background: #4b0082;
+    background: #4b0082;  /* Dark purple */
 }
 
+/* Error message styling */
 .error{
-    color:red;
+    color:red;  /* Red text */
     font-size: 14px;
 }
 
+/* Success message styling */
 .success{
-    color:green;
+    color:green;  /* Green text */
     font-size: 14px;
 }
 
-/* Tablet aur Mobile adjustment */
+/* Mobile screens ke liye responsive design */
 @media (max-width: 480px) {
-    h2 {
+    h2 {  /* Heading ko chhota banao */
         font-size: 1.5rem;
     }
-    .form-box {
+    .form-box {  /* Form box ko adjust karo */
         padding: 20px;
         margin: 20px auto;
     }
@@ -164,28 +180,37 @@ button:hover{
 
 <div class="container">
 
+    <!-- Customer edit karne ka heading -->
     <h2>Edit Customer</h2>
 
     <div class="form-box">
 
+        <!-- Error message dikhao agar ho -->
         <?php if($error): ?>
             <p class="error"><?= htmlspecialchars($error); ?></p>
         <?php endif; ?>
 
+        <!-- Success message dikhao agar ho -->
         <?php if($success): ?>
             <p class="success"><?= htmlspecialchars($success); ?></p>
         <?php endif; ?>
 
+        <!-- User update form -->
         <form method="POST">
 
+            <!-- Customer ka naam -->
             <input type="text" name="name" value="<?= htmlspecialchars($user['name']); ?>" required>
 
+            <!-- Customer ka email -->
             <input type="email" name="email" value="<?= htmlspecialchars($user['email']); ?>" required>
 
+            <!-- Customer ka phone number -->
             <input type="text" name="phone" value="<?= htmlspecialchars($user['phone']); ?>" required>
 
+            <!-- Naya password - optional (purana password rakhne ke liye empty chhodo) -->
             <input type="password" name="password" placeholder="New Password (optional)">
 
+            <!-- Update button -->
             <button type="submit">Update User</button>
 
         </form>

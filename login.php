@@ -10,18 +10,24 @@ if ($conn->connect_error) {
 }
 
 // CSRF
+// CSRF (Cross Site Request Forgery) attack se bachne ke liye token generate hota hai
+// Agar session me token pehle se nahi hai to naya token create hota hai
+
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
-$error = "";
+$error = "";// Kisi bhi validation ya login error ko store karne ke liye variable
 
+//// Check kar rahe hain ke form POST method se submit hua hai ya nahi
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    //Check karte hain ke form se aaya token session wale token ke barabar hai ya nahi
+    // Agar match nahi karta to request fake hai
 
     if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         die("Invalid CSRF Token");
     }
-
+    //spaces remove kerty hain..
     $name = trim($_POST["name"]);
     $password = trim($_POST["password"]);
 
@@ -29,29 +35,37 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($name == "" || $password == "") {
         $error = "All fields are required!";
     }
+    //   // Sirf letters, numbers aur underscore allow hain
+    // Length 3 se 30 characters tak honi chahiye
     elseif (!preg_match("/^[a-zA-Z0-9_]{3,30}$/", $name)) {
         $error = "Invalid username format!";
     }
     else {
 
-        $stmt = $conn->prepare("SELECT * FROM users WHERE name = ? LIMIT 1");
-        $stmt->bind_param("s", $name);
-        $stmt->execute();
-        $result = $stmt->get_result();
 
+   // Prepared statement use kar rahe hain SQL injection se bachne ke liye
+        $stmt = $conn->prepare("SELECT * FROM users WHERE name = ? LIMIT 1");
+        $stmt->bind_param("s", $name);//? placeholder me username bind karte hain
+        $stmt->execute();// query execute karte hain
+        $result = $stmt->get_result();// query execute karte hain
+          // ===========================
+        // USER FOUND CHECK
+        // ===========================
         if ($result->num_rows > 0) {
 
-            $row = $result->fetch_assoc();
+            $row = $result->fetch_assoc();// user ka data fetch karte hain array form me
 
-            if (password_verify($password, $row["password"])) {
-
+            if (password_verify($password, $row["password"])) {//user ka data fetch karte hain array form me
+                 //session regenerate taky old hack na ho
                 session_regenerate_id(true);
-
+                  // login baad data store in session
                 $_SESSION["user_id"]  = $row["id"];
                 $_SESSION["username"] = $row["name"];
                 $_SESSION["email"]    = $row["email"];
                 $_SESSION["phone"]    = $row["phone"];
                 $_SESSION["role"]     = $row["role"];
+
+                //check role
 
                 if ($row["role"] === "admin") {
                     header("Location: admin/admin_dashboard.php");
@@ -161,8 +175,9 @@ button{
 
 <h2>Login</h2>
 
-<form method="POST">
+<form method="POST">//post -> data hidden ma server ko dena
 
+//token submit with form
 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
 
 <label>Username</label>

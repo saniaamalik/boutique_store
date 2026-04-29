@@ -8,7 +8,7 @@ if ($conn->connect_error) {
     die("DB Error");
 }
 
-// CSRF
+// CSRF code gernate kerwana
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
@@ -16,7 +16,7 @@ if (empty($_SESSION['csrf_token'])) {
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
+// compare kerna session token ko with form
     if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         die("Invalid CSRF");
     }
@@ -53,9 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($res->num_rows > 0) {
             $error = "Email already exists!";
         } else {
-
+             //convert password into hash
             $hashed = password_hash($password, PASSWORD_DEFAULT);
-
+               //insrt into db
             $stmt = $conn->prepare("INSERT INTO users (name,email,password,phone,role) VALUES (?,?,?,?, 'customer')");
             $stmt->bind_param("ssss", $username, $email, $hashed, $phone);
 
@@ -164,7 +164,7 @@ button{
 <h2>Register</h2>
 
 <form method="POST">
-
+//csrf token submit with form
 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token']; ?>">
 
 <label>Username</label>
@@ -190,7 +190,7 @@ button{
 </div>
 
 <?php if($error): ?>
-<p class="error"><?= htmlspecialchars($error); ?></p>
+<p class="error"><?= htmlspecialchars($error); ?></p>//tags ko text ma convert kerna
 <?php endif; ?>
 
 </div>

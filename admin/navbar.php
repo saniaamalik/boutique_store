@@ -31,11 +31,13 @@ $firstLetter = strtoupper(substr($email, 0, 1));
     display: flex;
     gap: 15px;
     align-items: center;
+    color: #ffd700;
 }
 
 .menu a {
     text-decoration: none;
-    color: white;
+    color: #ffd700;
+    border-bottom-color: #ffd700;
     font-weight: 500;
     padding: 8px 10px;
     font-size: 14px;
@@ -56,7 +58,7 @@ $firstLetter = strtoupper(substr($email, 0, 1));
     top: 100%;
     left: 0;
     background: #800000;
-    color: white;
+    color: #ffd700;
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
     border-radius: 8px;
     min-width: 160px;

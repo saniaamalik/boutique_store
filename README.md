@@ -150,14 +150,15 @@ The SQL import includes example accounts:
 3. Push the code to GitHub
 4. Use the GitHub repo link as the source code submission
 
-### InfinityFree Deployment
-1. Sign up at https://infinityfree.net/
-2. Create a free PHP hosting account
-3. Upload all `web_project` files into the host `htdocs` folder
-4. Create a new MySQL database on InfinityFree
-5. Import `project.sql` into the remote database
-6. Update `config/db.php` with the remote database credentials
-7. Visit the deployed application URL and verify functionality
+##Hostinger Deployment
+1.Sign up / login at https://www.hostinger.com/
+2.Purchase a hosting plan (Premium or Business recommended) and connect your domain
+3.Go to hPanel → Files → File Manager
+4.Upload all web_project files into the public_html folder
+5.Go to hPanel → Databases → MySQL Databases and create a new database
+6.Import project.sql into the database using phpMyAdmin
+7.Update config/db.php with Hostinger database credentials (DB name, username, password, host)
+8.Open your domain URL and verify that the application is working correctly
 
 ## Notes
 - This README update does not modify any application source files

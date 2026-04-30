@@ -15,30 +15,27 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     background: #800000;
     display: flex;
     align-items: center;
-    /* justify-content: space-between ko hata kar center kiya hai */
-    justify-content: space-between; 
-    padding: 0 30px;
+    justify-content: space-between;
+    padding: 0 20px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 999;
 }
 
-.navbar .logo {
-    font-size: 22px;
+/* LOGO */
+.logo {
+    font-size: 20px;
     font-weight: bold;
     color: white;
     text-decoration: none;
-    white-space: nowrap;
-    /* Logo ko left side par fix rakhne ke liye */
-    flex: 1; 
 }
 
-/* Menu Wrapper ko center karne ke liye */
+/* CENTER MENU */
 .menu-wrapper {
     display: flex;
     justify-content: center;
-    flex: 2; /* Ye beech ka hissa zayda space lega taake center ho sakay */
+    flex: 2;
 }
 
 .menu {
@@ -55,7 +52,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     padding-bottom: 4px;
     border-bottom: 2px solid transparent;
     transition: 0.3s;
-    white-space: nowrap;
 }
 
 .menu a:hover, .menu a.active {
@@ -64,81 +60,122 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 }
 
 .menu a.admin-link {
-    color: white;
     font-weight: 700;
     background: rgba(255,255,255,0.2);
     padding: 5px 14px;
     border-radius: 20px;
     border-bottom: none;
-    font-size: 14px;
 }
 
-.menu a.admin-link:hover {
-    background: white;
-    color: #800000;
-}
-
-/* Right buttons ko right side par push karne ke liye */
+/* RIGHT SECTION */
 .right-section {
     display: flex;
     align-items: center;
-    gap: 15px;
-    justify-content: flex-end;
-    flex: 1; 
+    gap: 12px;
+    padding-right: 10px;
 }
 
-.auth-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.nav-login-btn, .nav-register-btn {
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 14px;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.nav-login-btn {
-    background: white;
-    color: #800000;
-    border: 2px solid white;
-}
-
-.nav-register-btn {
-    background: #eda7a2;
-    color: #800000;
-    border: 2px solid #800000;
-}
-
+/* PROFILE */
 .profile {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background: #ffe6f2;
     color: #800000;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     font-weight: bold;
+}
+
+/* AUTH BUTTONS */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-login-btn, .nav-register-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 13px;
     text-decoration: none;
 }
 
-@media (max-width: 992px) {
-    .navbar { height: auto; padding: 15px; flex-direction: column; gap: 15px; }
-    .logo, .menu-wrapper, .right-section { flex: none; width: 100%; justify-content: center; text-align: center; }
+.nav-login-btn {
+    background: white;
+    color: #800000;
+}
+
+.nav-register-btn {
+    background: #eda7a2;
+    color: #800000;
+}
+
+/* HAMBURGER */
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-wrapper {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #800000;
+        display: none;
+        flex-direction: column;
+        padding: 15px 0;
+    }
+
+    .menu-wrapper.active {
+        display: flex;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .menu a {
+        width: 100%;
+        text-align: left;
+        padding: 12px 20px;
+    }
+
+    /* ⭐ IMPORTANT FIX: PROFILE SHOW ON MOBILE */
+    .right-section {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        display: flex;
+    }
+
+    .auth-buttons {
+        display: none;
+    }
 }
 </style>
 
 <div class="navbar">
 
+    <!-- LEFT -->
     <a href="../index.php" class="logo">🛍 Stylish Boutique</a>
 
-    <div class="menu-wrapper">
+    <!-- CENTER MENU -->
+    <div class="menu-wrapper" id="menuWrapper">
         <div class="menu">
+
             <a href="dashboard.php" class="<?= $currentPage == 'dashboard.php' ? 'active' : '' ?>">Home</a>
 
             <?php if (!empty($user_id)): ?>
@@ -148,12 +185,20 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <?php endif; ?>
 
             <a href="../admin/admin_dashboard.php" class="admin-link">👨‍💼 Admin</a>
+
+            <?php if (empty($user_id)): ?>
+                <a href="../login.php">Login</a>
+                <a href="../register.php">Register</a>
+            <?php endif; ?>
+
         </div>
     </div>
 
+    <!-- RIGHT -->
     <div class="right-section">
+
         <?php if (!empty($user_id)): ?>
-            <a href="profile.php" class="profile" title="My Profile">
+            <a href="profile.php" class="profile">
                 <?= htmlspecialchars($firstLetter) ?>
             </a>
         <?php else: ?>
@@ -162,6 +207,15 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <a href="../register.php" class="nav-register-btn">Register</a>
             </div>
         <?php endif; ?>
+
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
     </div>
 
 </div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("menuWrapper").classList.toggle("active");
+}
+</script>

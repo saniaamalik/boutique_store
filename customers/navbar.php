@@ -10,13 +10,13 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 
 <style>
-
 .navbar {
     height: 70px;
     background: #800000;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    /* justify-content: space-between ko hata kar center kiya hai */
+    justify-content: space-between; 
     padding: 0 30px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     position: sticky;
@@ -30,13 +30,21 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     color: white;
     text-decoration: none;
     white-space: nowrap;
+    /* Logo ko left side par fix rakhne ke liye */
+    flex: 1; 
+}
+
+/* Menu Wrapper ko center karne ke liye */
+.menu-wrapper {
+    display: flex;
+    justify-content: center;
+    flex: 2; /* Ye beech ka hissa zayda space lega taake center ho sakay */
 }
 
 .menu {
     display: flex;
-    gap: 20px;
+    gap: 25px;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 .menu a {
@@ -50,12 +58,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     white-space: nowrap;
 }
 
-.menu a:hover {
-    color: #ffd700;
-    border-bottom-color: #ffd700;
-}
-
-.menu a.active {
+.menu a:hover, .menu a.active {
     color: #ffd700;
     border-bottom-color: #ffd700;
 }
@@ -68,7 +71,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     border-radius: 20px;
     border-bottom: none;
     font-size: 14px;
-    transition: 0.3s;
 }
 
 .menu a.admin-link:hover {
@@ -76,45 +78,39 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     color: #800000;
 }
 
+/* Right buttons ko right side par push karne ke liye */
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: flex-end;
+    flex: 1; 
+}
+
 .auth-buttons {
     display: flex;
     gap: 10px;
-    align-items: center;
+}
+
+.nav-login-btn, .nav-register-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
 .nav-login-btn {
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 14px;
-    text-decoration: none;
     background: white;
     color: #800000;
     border: 2px solid white;
-    transition: 0.3s;
-}
-
-.nav-login-btn:hover {
-    background: transparent;
-    color: white;
-    border-color: white;
 }
 
 .nav-register-btn {
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 14px;
-    text-decoration: none;
-    background:  #eda7a2;
+    background: #eda7a2;
     color: #800000;
     border: 2px solid #800000;
-    transition: 0.3s;
-}
-
-.nav-register-btn:hover {
-    background: #ffe6f2;
-    border-color: #ffe6f2;
 }
 
 .profile {
@@ -129,79 +125,33 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     cursor: pointer;
     font-weight: bold;
     text-decoration: none;
-    font-size: 16px;
-    transition: 0.3s;
-    flex-shrink: 0;
 }
 
-.profile:hover {
-    transform: scale(1.1);
-    background: #ffccdd;
+@media (max-width: 992px) {
+    .navbar { height: auto; padding: 15px; flex-direction: column; gap: 15px; }
+    .logo, .menu-wrapper, .right-section { flex: none; width: 100%; justify-content: center; text-align: center; }
 }
-
-@media (max-width: 768px) {
-    .navbar {
-        height: auto;
-        padding: 12px 16px;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .menu {
-        width: 100%;
-        justify-content: center;
-        gap: 12px;
-    }
-    .auth-buttons {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .navbar .logo  { font-size: 18px; }
-    .menu a        { font-size: 13px; }
-    .nav-login-btn,
-    .nav-register-btn { padding: 7px 14px; font-size: 13px; }
-}
-
 </style>
 
 <div class="navbar">
 
     <a href="../index.php" class="logo">🛍 Stylish Boutique</a>
 
-    <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
-
+    <div class="menu-wrapper">
         <div class="menu">
-
-            <a href="dashboard.php"
-               class="<?= $currentPage == 'dashboard.php' ? 'active' : '' ?>">
-                Home
-            </a>
+            <a href="dashboard.php" class="<?= $currentPage == 'dashboard.php' ? 'active' : '' ?>">Home</a>
 
             <?php if (!empty($user_id)): ?>
-
-                <a href="cart.php"
-                   class="<?= $currentPage == 'cart.php' ? 'active' : '' ?>">
-                    🛒 Cart
-                </a>
-
-                <a href="orders.php"
-                   class="<?= $currentPage == 'orders.php' ? 'active' : '' ?>">
-                    📦 Orders
-                </a>
-
+                <a href="cart.php" class="<?= $currentPage == 'cart.php' ? 'active' : '' ?>">🛒 Cart</a>
+                <a href="orders.php" class="<?= $currentPage == 'orders.php' ? 'active' : '' ?>">📦 Orders</a>
                 <a href="logout.php">Logout</a>
-
             <?php endif; ?>
 
-            <!-- ✅ Admin always visible -->
-            <a href="../admin/admin_dashboard.php" class="admin-link">
-                👨‍💼 Admin
-            </a>
-
+            <a href="../admin/admin_dashboard.php" class="admin-link">👨‍💼 Admin</a>
         </div>
+    </div>
 
+    <div class="right-section">
         <?php if (!empty($user_id)): ?>
             <a href="profile.php" class="profile" title="My Profile">
                 <?= htmlspecialchars($firstLetter) ?>
@@ -212,7 +162,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <a href="../register.php" class="nav-register-btn">Register</a>
             </div>
         <?php endif; ?>
-
     </div>
 
 </div>

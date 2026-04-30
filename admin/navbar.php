@@ -3,49 +3,45 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-/* 🔐 SAFETY CHECK */
 $email = $_SESSION['email'] ?? 'A';
 $firstLetter = strtoupper(substr($email, 0, 1));
 ?>
 
 <style>
-/* ===== NAVBAR BASE ===== */
+/* ===== NAVBAR ===== */
 .navbar {
-    min-height: 80px; /* Fixed height ki jagah min-height use ki hai */
+    height: 70px;
     background: #800000;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    padding: 10px 30px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    flex-wrap: wrap; /* Taake mobile par items niche aa saken */
+    padding: 0 20px;
+    position: relative;
 }
 
+/* LOGO */
 .logo {
-    font-size: 20px;
-    font-weight: bold;
     color: white;
+    font-size: 18px;
+    font-weight: bold;
 }
 
+/* CENTER MENU (ABSOLUTE CENTER FIX) */
 .menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    gap: 15px;
+    gap: 20px;
     align-items: center;
-    color: #ffd700;
 }
 
+/* LINKS */
 .menu a {
     text-decoration: none;
     color: #ffd700;
-    border-bottom-color: #ffd700;
-    font-weight: 500;
-    padding: 8px 10px;
     font-size: 14px;
-    transition: 0.3s;
-}
-
-.menu a:hover {
-    color: #ffd700;
+    padding: 6px 8px;
 }
 
 /* DROPDOWN */
@@ -56,14 +52,11 @@ $firstLetter = strtoupper(substr($email, 0, 1));
 .dropdown {
     position: absolute;
     top: 100%;
-    left: 0;
+    right: 0;
     background: #800000;
-    color: #ffd700;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    border-radius: 8px;
     min-width: 160px;
     display: none;
-    z-index: 999;
+    border-radius: 6px;
 }
 
 .menu-item:hover .dropdown {
@@ -73,19 +66,24 @@ $firstLetter = strtoupper(substr($email, 0, 1));
 .dropdown a {
     display: block;
     padding: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
     color: white;
-    text-decoration: none;
 }
 
 .dropdown a:hover {
     background: rgba(255,255,255,0.1);
 }
 
+/* RIGHT */
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 /* PROFILE */
 .profile {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: #ffe6f2;
     color: #800000;
@@ -93,81 +91,73 @@ $firstLetter = strtoupper(substr($email, 0, 1));
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    text-decoration: none;
-    transition: 0.3s;
 }
 
-.profile:hover {
-    background: #ffccdd;
-    transform: scale(1.1);
+/* HAMBURGER */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
 }
 
-/* ===================================================
-   ⭐ MEDIA QUERIES (RESPONSIVE FIX)
-   =================================================== */
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
 
-/* Jab screen 992px se choti ho (Tablets/Large Phones) */
-@media (max-width: 992px) {
-    .navbar {
-        flex-direction: column; /* Logo, Menu aur Profile vertical ho jayenge */
-        padding: 15px;
+    .menu-toggle {
+        display: block;
     }
 
-    .logo {
-        margin-bottom: 15px;
-    }
-
+    /* HIDE CENTER MENU */
     .menu {
-        justify-content: center;
-        flex-wrap: wrap; /* Links multiple lines mein aa saken ge */
-        margin-bottom: 15px;
-        width: 100%;
-    }
-
-    .menu a {
-        font-size: 13px;
-        padding: 5px 8px;
-    }
-
-    /* Mobile par dropdown position theek karne ke liye */
-    .dropdown {
-        position: static; 
-        box-shadow: none;
-        border: 1px solid #ffe6f2;
-        width: 100%;
-    }
-}
-
-/* Jab screen 480px se choti ho (Small Mobile) */
-@media (max-width: 480px) {
-    .menu {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* 2 columns ka grid ban jayega */
-        gap: 5px;
-    }
-
-    .menu a {
+        position: absolute;
+        top: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        background: #800000;
+        flex-direction: column;
+        display: none;
+        border-radius: 10px;
+        padding: 10px 0;
         text-align: center;
-        background: #f8f0ff;
-        border-radius: 5px;
     }
 
-    .logo {
-        font-size: 18px;
+    .menu.active {
+        display: flex;
+    }
+
+    .menu a {
+        width: 100%;
+        padding: 12px;
+    }
+
+    /* MOBILE DROPDOWN */
+    .dropdown {
+        position: static;
+        display: none;
+        width: 100%;
+    }
+
+    .menu-item.active .dropdown {
+        display: block;
     }
 }
 </style>
 
 <div class="navbar">
 
+    <!-- LEFT -->
     <div class="logo">🛍 Stylish Boutique Admin</div>
 
-    <div class="menu">
+    <!-- CENTER MENU -->
+    <div class="menu" id="menu">
+
         <a href="admin_dashboard.php">Dashboard</a>
         <a href="manage_users.php">Customers</a>
 
         <div class="menu-item">
-            <a href="#">Products ▾</a>
+            <a href="#" onclick="toggleDropdown(event, this)">Products ▾</a>
             <div class="dropdown">
                 <a href="add_product.php">Add Product</a>
                 <a href="manage_products.php">View Products</a>
@@ -175,7 +165,7 @@ $firstLetter = strtoupper(substr($email, 0, 1));
         </div>
 
         <div class="menu-item">
-            <a href="#">Categories ▾</a>
+            <a href="#" onclick="toggleDropdown(event, this)">Categories ▾</a>
             <div class="dropdown">
                 <a href="add_category.php">Add Category</a>
                 <a href="manage_categories.php">View Categories</a>
@@ -185,10 +175,31 @@ $firstLetter = strtoupper(substr($email, 0, 1));
         <a href="manage_orders.php">Orders</a>
         <a href="sales.php">Sales</a>
         <a href="logout.php">Logout</a>
+
     </div>
 
-    <a href="admin_profile.php" class="profile">
-        <?= htmlspecialchars($firstLetter); ?>
-    </a>
+    <!-- RIGHT -->
+    <div class="right-section">
+
+        <a href="admin_profile.php" class="profile">
+            <?= htmlspecialchars($firstLetter); ?>
+        </a>
+
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    </div>
 
 </div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+}
+
+function toggleDropdown(e, el) {
+    if (window.innerWidth <= 768) {
+        e.preventDefault();
+        el.parentElement.classList.toggle("active");
+    }
+}
+</script>
